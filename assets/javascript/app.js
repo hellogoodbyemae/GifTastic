@@ -36,4 +36,41 @@ var topics = ["adventure", "yoga pose", "forrest", "northern lights", "tattoos",
 			}
 
         });    
-	});
+    });
+    
+    function displayGifs () {
+		var topic = $(this).attr("data-name");
+		var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
+
+		$.ajax({
+          url: queryURL,
+          method: "GET"
+        }).done(function(response) {
+
+          console.log(response);
+
+          $(".gifs-view").empty();
+          for (var i = 0; i < response.data.length; i++) {
+          	var gifDiv = $("<div>");
+          	gifDiv.addClass("gifDiv");
+          	gifDiv.html("<p>Rating: " + response.data[i].rating.toUpperCase() + "</p>");
+
+          	var gifImage = $("<img src='" + response.data[i].images.fixed_height_still.url + "'>");
+          	gifImage.addClass("gif");
+
+          	var imageDiv = $("<div>");
+          	imageDiv.addClass("play");
+          	imageDiv.attr("data-state", "still");
+          	imageDiv.attr("data-name", topic);
+          	imageDiv.attr("data-still", response.data[i].images.fixed_height_still.url);
+          	imageDiv.attr("data-animate",response.data[i].images.fixed_height.url)
+          	
+          	$(imageDiv).append(gifImage);
+          	$(gifDiv).append(imageDiv);
+          	$(".gifs-view").append(gifDiv);
+          }
+
+        });
+	};
+
+    $(document).on("click", ".topic", displayGifs);
