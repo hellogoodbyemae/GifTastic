@@ -1,22 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="utf-8">
-  <title>Animal Buttons</title>
-</head>
+    <head>
+        <meta charset="utf-8">
+        <title>GifTastic Buttons</title>
+    </head>
 
-<body>
-  <button data-animal="cat">meow</button>
-  <button data-animal="dog">woof</button>
-  <button data-animal="bird">chirp</button>
-  <button data-animal="duck">quack</button>
-  <div id="gifs-appear-here">
-  </div>
+    <body>
+	
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="buttons-view"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-9 container-fluid">
+                    <div class="gifs-view"></div>
+                </div>
+                <div class="col-md-3">
+                    <form id="gif-form">
+                          <label for="topic-input">What Do You Like?</label><br>
+                          <input type="text" id="topic-input"><br>
+                          <input id="add-topic" class="btn btn-default" type="submit" value="Submit">
+                    </form>
+                </div>
+            </div>
+        </div>
 
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type= "text/javascript" src="assets/javascript/app.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript" src="assets/javascript/app.js"></script>
 
-</body>
+    </body>
 
 </html>
