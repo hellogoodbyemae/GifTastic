@@ -1,0 +1,32 @@
+body {
+    background-image: url("../images/background.jpg");
+    background-size: cover;
+    margin: 0px;
+    padding: 0px;
+    color: white;
+    font-weight: 600;
+}
+
+.buttons-view {
+    margin: 30px 15px;
+}
+
+.gifDiv {
+    margin-right: 15px;
+    float: left;
+    margin-bottom: 30px;
+}
+
+.topic {
+    margin-right: 5px;
+    margin-bottom: 5px;
+    background-color: #555555;
+    color: white;
+}
+
+#add-topic {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: #555555;
+    color: white;
+}

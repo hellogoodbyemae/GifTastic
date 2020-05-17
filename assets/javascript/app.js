@@ -40,7 +40,7 @@ var topics = ["adventure", "yoga pose", "forrest", "northern lights", "tattoos",
         });    
     });
     
-    // When a button is clicked, and the ten giphy images are retrieved, they wil be displayed here in a div we create called "gifs-view"
+    // When a button is clicked, and the ten giphy images are retrieved from the queryURL, they wil be displayed here in the div called "gifs-view"
     function displayGifs () {
 		var topic = $(this).attr("data-name");
 		var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
@@ -52,18 +52,18 @@ var topics = ["adventure", "yoga pose", "forrest", "northern lights", "tattoos",
 
           console.log(response);
 
-          //Clears the container for new content
+          //Clears the container for new content & pulls in image rating information
           $(".gifs-view").empty();
           for (var i = 0; i < response.data.length; i++) {
           	var gifDiv = $("<div>");
           	gifDiv.addClass("gifDiv");
           	gifDiv.html("<p>Rating: " + response.data[i].rating.toUpperCase() + "</p>");
 
-            //Pulls in the image rating information
+            //Pulls in the image GIF information
           	var gifImage = $("<img src='" + response.data[i].images.fixed_height_still.url + "'>");
           	gifImage.addClass("gif");
 
-            //Pulls in the image Gif information
+            //Orders the images and adds the animation play/still attributes
           	var imageDiv = $("<div>");
           	imageDiv.addClass("play");
           	imageDiv.attr("data-state", "still");
@@ -97,4 +97,7 @@ var topics = ["adventure", "yoga pose", "forrest", "northern lights", "tattoos",
     $(document).on("click", ".topic", displayGifs);
 
     // Whem any of the Gifs are cicked, they are going to run the playGif function
-    $(document).on("click", ".play", playGif);
+	$(document).on("click", ".play", playGif);
+
+// Displays array of buttons on the page
+renderButtons();
